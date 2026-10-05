@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 다변수 최적화 마스터 | 편미분과 그래디언트에서 헤시안 행렬까지</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M12 2L2 22h20L12 2zm0 4.5l6.5 13.5h-13L12 6.5z'/></svg>">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-wrapper">
+        <div class="brand-logo">∇</div>
+        <div class="brand-text">
+          <h1>AI 다변수 최적화 마스터</h1>
+          <p>고급 인공지능 수학: 편미분 · 그래디언트 · 다변수 경사하강법 · 헤시안 행렬</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- 진도율 표시 -->
+        <div class="progress-pill">
+          <span>진도율</span>
+          <div class="progress-bar-mini">
+            <div class="progress-fill" id="header-progress-fill"></div>
+          </div>
+          <strong id="header-progress-text">1/8</strong>
+        </div>
+
+        <!-- 사운드 토글 -->
+        <button id="btn-toggle-sound" class="action-btn" title="효과음 켜기/끄기">
+          🔊
+        </button>
+
+        <!-- 카메라 뷰 리셋 -->
+        <button id="btn-reset-cam" class="action-btn" title="3D 시점 리셋">
+          🔄
+        </button>
+
+        <!-- 탑뷰 전환 -->
+        <button id="btn-top-view" class="action-btn" title="위에서 내려다보기 (Top View)">
+          🗺️
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-navigation" id="tab-nav">
+      <button class="tab-btn active" data-mod="0">
+        <span class="tab-badge">00</span>
+        <span>선수학습: 1D to 2D</span>
+      </button>
+      <button class="tab-btn" data-mod="1">
+        <span class="tab-badge">01</span>
+        <span>안개 산과 등고선</span>
+      </button>
+      <button class="tab-btn" data-mod="2">
+        <span class="tab-badge">02</span>
+        <span>편미분: 케이크 자르기</span>
+      </button>
+      <button class="tab-btn" data-mod="3">
+        <span class="tab-badge">03</span>
+        <span>그래디언트와 360° 나침반</span>
+      </button>
+      <button class="tab-btn" data-mod="4">
+        <span class="tab-badge">04</span>
+        <span>다변수 경사하강법</span>
+      </button>
+      <button class="tab-btn" data-mod="5">
+        <span class="tab-badge">05</span>
+        <span>헤시안 행렬과 휘어짐</span>
+      </button>
+      <button class="tab-btn" data-mod="6">
+        <span class="tab-badge">06</span>
+        <span>감자칩과 안장점</span>
+      </button>
+      <button class="tab-btn" data-mod="7">
+        <span class="tab-badge">07</span>
+        <span>지형설계소 & 실전퀴즈</span>
+      </button>
+    </nav>
+
+    <!-- Workspace Layout -->
+    <main class="workspace-layout">
+      <!-- Left: Pedagogy & Story Panel -->
+      <section id="module-container" class="pedagogy-panel">
+        <!-- 모듈별 내용이 동적으로 로드됩니다 -->
+      </section>
+
+      <!-- Right: Interactive Visualization Lab -->
+      <aside class="lab-panel">
+        <div class="viewer-wrapper">
+          <!-- 3D 뷰어 헤더 -->
+          <div class="viewer-header">
+            <div class="viewer-title">
+              <span>🌐</span>
+              <span>3D 공간 지형 시각화 (Interactive 3D Surface)</span>
+            </div>
+            <div class="viewer-controls">
+              <span style="font-size: 0.75rem; color: var(--text-dim);">마우스 드래그: 회전 | 휠: 줌</span>
+            </div>
+          </div>
+
+          <!-- 3D Three.js 캔버스 영역 -->
+          <div class="three-canvas-container" id="three-container">
+            <div class="viewer-overlay-hint">💡 3D 곡면을 자유롭게 돌려가며 입체적으로 관찰하세요</div>
+          </div>
+
+          <!-- 2D 등고선 뷰어 헤더 -->
+          <div class="viewer-header" style="border-top: 1px solid var(--border-subtle);">
+            <div class="viewer-title">
+              <span>🗺️</span>
+              <span>2D 등고선 지도 & 벡터장 (Contour & Vector Field)</span>
+            </div>
+            <div class="viewer-controls">
+              <span style="font-size: 0.75rem; color: var(--text-dim);">캔버스 클릭: 위치 이동</span>
+            </div>
+          </div>
+
+          <!-- 2D Canvas 영역 -->
+          <div class="contour-canvas-container">
+            <canvas id="contour-canvas" class="contour-canvas"></canvas>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
