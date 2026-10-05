@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: './', // 상대 경로로 빌드하여 GitHub Pages 및 로컬 어디서든 정상 로드
+  base: '/ai-multivariable-math/', // GitHub Pages 저장소 이름에 맞춘 표준 base 경로
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
